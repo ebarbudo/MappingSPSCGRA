@@ -3,7 +3,7 @@
 
 ## Overview
 
-This repository contains a software tool developed for the easy reuse of Software Programmable Streaming Coarse-Grained Reconfigurable Architectures (SPS-CGRA). The complete overview is showed in the following figure
+This repository contains a software tool developed for the easy reuse of Software Programmable Streaming Coarse-Grained Reconfigurable Architectures (SPS-CGRA). The complete overview is showed in the following figure.
 
 
 
@@ -11,33 +11,33 @@ This repository contains a software tool developed for the easy reuse of Softwar
 
 
 
-The inputs are a couple of specification files (application and hardware). The software tool consists of a parser, a set of mapping algorithms, a random graph generator, a performance evaluation and a configuration context generator.
+The inputs are a couple of specification files (application and hardware). The software tool consists of a parser, a set of mapping algorithms, a random graph generator, a performance evaluation, and a configuration context generator.
 
 ## Specification Files
 
-The inputs of the tool are a couple of specification file. Some examples of these files are in the folder configfiles/.
+The inputs of the tool are a couple of specification files. Some examples of these files are in the folder configfiles/.
 
 General specifications for the files:
 * All comments should start with #
 * Each line should finish with a ;
+* White spaces are not considered
 
 
 ### Application specification file
 
-An example of a specification file is showed in the following figure
+An example of a specification file is showed in the following figure.
 
 ![specificationfileapplication](https://user-images.githubusercontent.com/35706145/117912046-655e6d80-b2a4-11eb-8fdf-42699c0634ca.png)
 
-
-In this simple example the application consists of a sensor, an actuator and a task, all conected in a pipeline. There is no limit to the number of tasks, parameters, or number of output edges. The name of the task should be without spaces and one single word that could contain letters, number or special characters.
+In this simple example, the application consists of a sensor, an actuator, and a task connected in a pipeline. There is no limit to the number of tasks, parameters, or the number of output edges. The task's name should be without spaces and one single word that could contain letters, numbers, or special characters.
 
 ### Hardware specification file
 
-An example of a specification file is showed in the following figure
+An example of a specification file is showed in the following figure.
 
 ![specificationfilehardware](https://user-images.githubusercontent.com/35706145/117912704-94291380-b2a5-11eb-8b78-14ae32e1898b.png)
 
-The specification file is divided into three sections: configuration functions and parameters, latency functions (input and computing latencies) and hardware resources description.
+The specification file is divided into three sections: configuration functions and parameters, latency functions (input and computing latencies), and hardware resources description.
 
 #### Configuration functions
 
@@ -45,16 +45,15 @@ This part should start with the word
 
     configuration;
     
-next, we define the type of configuration, either sequential or parallel. In a sequential configuration, the configuration costs of all the hardware resources will be added. In a parallel configuration, the largest value of configuration cost of the hardware resources will be the one considered during the performance evaluation. Following the type, we describe the configuration cost functions of the hardware resources. These functions might consist of  elementary operations (+,x,-,/) and their concatenations. Next, we could describe the parameters to take into account in the computing of the configuration cost functions.  This helps if we have a fixed parameter or a parameter related to a variable.
+Next, we define the type of configuration, either sequential or parallel. In a sequential configuration, the configuration costs of all the hardware resources will be added. In a parallel configuration, the largest value of configuration cost of the hardware resources will be the one considered during the performance evaluation. Following the type, we describe the configuration cost functions of the hardware resources. These functions might consist of elementary operations (+,x,-,/) and their concatenations. Next, we describe the parameters that will be taken into account in computing the configuration cost functions.  This helps if we have a fixed parameter or a parameter related to a variable.
 The order of the elements is not important.
-
 #### Latency functions
 
 This part should start with the word
  
     functions;
    
-in this part we should define the input and computing functions. We can use elementary operations (+,x,-,/) and their concatenations. Also, we may use keywords such as width (width of the input image) or height (height of the input image). Aditionally, we may define the function as a constant. Both configuration functions and latency functions names will need to match the names that we define in the description of the hardware resources.
+In this part, we should define the input and computing functions. We can use elementary operations (+,x,-,/) and their concatenations. Also, we may use keywords such as width (width of the input image) or height (height of the input image). Additionally, we may define the function as a constant. Both configuration functions and latency function's names will need to match the names specified in the description of the hardware resources.
 
 
 #### Hardware resources description
@@ -63,12 +62,12 @@ This part should start with the word
 
     resources;
     
-in this part we describe the hardware resources and their features. An extract of a hardware specification file is showed in the following figure
+In this part, we describe the hardware resources and their features. An extract of a hardware specification file is showed in the following figure.
 
 ![specificationresource](https://user-images.githubusercontent.com/35706145/117990567-e3e9f800-b302-11eb-84dc-09db6bba5fb4.png)
 
 
-Each hardware resource should start with the name. Then the following line defines the type of hardware resource and the output edges. The resources may be type rp (processing resource), rw (communication resource write operation), rr (communication resource read operation), ri (communication resource interface), rmux (communication resource multiplexer), rm (memory resource). Then in the following line we define the configuration cost function of the hardware resource, we also may define some parameters in this field. The next line defines the operations that the hardware resource can perform. Each operation is described with the name of the operation, its parameters, the input latency function name and the computing latency function name. These two names should be defined in the latency functions section. 
+Each hardware resource should start with the name. Then the following line defines the type of hardware resource and the output edges. The resources may be type rp (processing resource), rw (communication resource write operation), rr (communication resource read operation), ri (communication resource interface), rmux (communication resource multiplexer), rm (memory resource). Then in the following line, we define the configuration cost function of the hardware resource. We also may define some parameters in this field. The next line defines the operations that the hardware resource can perform. Each operation is described with the name of the operation, its parameters, the input latency function name, and the computing latency function name. These two names should be defined in the latency functions section. 
 
 
 Allowed parameters:
@@ -83,7 +82,7 @@ Allowed parameters:
 
 ## Command line and requirements
 
-This software tool is developed in Python 3.6. The only external requirement is the GraphViz (version 0.13.2) library installed, other libraries will be installed automatically. The software tool is executed throught the command line and several arguments need to be specified.
+This software tool is developed in Python 3.6. The only external requirement is the GraphViz (version 0.13.2) library installed. Other libraries will be installed automatically. The software tool is executed through the command line, and several arguments need to be specified.
 
 The main arguments are:
 
@@ -93,18 +92,18 @@ The main arguments are:
 
 * -app : defines the path of the application file, and it should include the name of the file. The file needs to be inside of the working directory or in a sub-folder of it. Example
     
-            -app inputfiles/configurationfileapplication.txt
+         -app inputfiles/configurationfileapplication.txt
             
  the path is saved directly to args.AppFilepath and transfer to the variable "filepath\_app", this variable feeds  the configuration files parser. No path and random generator disable will raise an error.
 * -hw : defines the path of the hardware file, it should include the name of the file. The file needs to be inside of the working directory or in a sub-folder of it. Example:
     
-            -hw inputfiles/configurationfilehardware.txt
+        -hw inputfiles/configurationfilehardware.txt
             
   the path is saved directly to args.HwFilepath and transfer to the variable "filepath\_hw", this variable feeds   the configuration files parser. No path and random generator disable will raise an error.
     
 * -pr : defines the verbosity.  The argument is saved directly to args.Print. Example of input
     
-            -pr noprint
+       -pr noprint
             
     We have several options of verbosity, main options are main (information about the main script), eval (information about the performance evaluation script), exh (exhaustive algorithm script), heu (ta-map and bb-map scripts), ql (q-learning approach) and list (ss-map script).  Default value is 'noprint'.
 * -mo :  we use this argument if we want or not execute the performance evaluation. The argument is saved to args.Total.
@@ -115,17 +114,17 @@ The main arguments are:
      Options for this argument: total (execution of performance evaluation) and noperfo. Default value is 'noperfo'.
 * -ta : argument for the type of mapping process that we want to perform.  Example
     
-            -ta heu
+       -ta heu
     
 The options are heu (ta-map and bb-map), list (ss-map), exh (exhaustive algorithm) and q-l (q-learning mapping algorithm)
 * -sg : defines if we want to visualize the input graphs. Example
     
-            -sg True
+          -sg True
    Options are true or false
 * -si : defines if we want to visualize the output graph (implementation graph). Options are true or false
 * -con : argument for the path of the constrains file. It should include the name of the file. Example
   
-            -con inputfiles/constrainsfile.txt
+          -con inputfiles/constrainsfile.txt
             
  The default value is an empty string which means no constrains. If we specify a path and the data of the file does not correspond to our input graphs but it can be used, the mapping will be wrong.
 * -ran : random graph generator enable. Options are true or false.
@@ -186,6 +185,8 @@ The ta-map is based on lookahead techniques and to be selected we use the follow
  
  The q-learning mapping algorithm requires to be specified: the number of episodes for the offline and the online training, and the specifications of the epsilon decay
  
+      -ta q-l 
+ 
  ### Single-Shot Mapping Algorithm
  
  The SS-MAP requires the following argument:
@@ -194,13 +195,15 @@ The ta-map is based on lookahead techniques and to be selected we use the follow
  
  and the version to be executed,
  
-            -listtype one
+      -listtype one
  
  the options are one, using one random topological sorting, and alltopo using all topological sortings.
  
  ### Exhaustive mapping algorithm
  
  An exhaustive algorithm is included as a benchmark for the other algorithms.
+ 
+    -ta exh
  
  
  
