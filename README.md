@@ -166,19 +166,21 @@ Default value 'outputfiles'
 
 ## Mapping algorithms
 
-This tool includes the following mapping algorithms : topology-aware mapping algorithm (TA-MAP), bayes-based mapping algorithm (BB-MAP), q-learning mapping algorithm, single-shot mapping algorithm (SS-MAP) and an exhaustive mapping algorithm.
+This tool includes the following mapping algorithms : topology-aware mapping algorithm (TA-MAP), bayes-based mapping algorithm (BB-MAP), q-learning mapping algorithm, single-shot mapping algorithm (SS-MAP) and an exhaustive mapping algorithm. Each algorithm has its default values, however, they can change through the respective arguments.
 
 ### Topology-aware mapping algorithm
 
 The ta-map is based on lookahead techniques and to be selected we use the following arguments:
 
--ta heu -heutype original
+    -ta heu -heutype original
 
 ### Bayes-Based mapping algorithm
  
  The BB-MAP requires the following arguments:
  
- -ta heu -heutype bayes -byslatlmt INTEGER -bysdislmt INTEGER
+     -ta heu -heutype bayes 
+     
+   Aditional arguments may be used, -byslatlmt and -bysdislmt, both arguments only accepts integers.
  
  ### Q-Learning mapping algorithm
  
@@ -186,11 +188,15 @@ The ta-map is based on lookahead techniques and to be selected we use the follow
  
  ### Single-Shot Mapping Algorithm
  
- The SS-MAP requires the following arguments:
+ The SS-MAP requires the following argument:
  
- -ta list 
+     -ta list 
  
- in the case of -listtype we can define either one or alltopo
+ and the version to be executed,
+ 
+            -listtype one
+ 
+ the options are one, using one random topological sorting, and alltopo using all topological sortings.
  
  ### Exhaustive mapping algorithm
  
