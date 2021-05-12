@@ -21,6 +21,7 @@ General specifications for the files:
 * All comments should start with #
 * Each line should finish with a ;
 
+
 ### Application specification file
 
 An example of a specification file is showed in the following figure
@@ -68,6 +69,15 @@ in this part we describe the hardware resources and their features. An extract o
 
 
 Each hardware resource should start with the name. Then the following line defines the type of hardware resource and the output edges. The resources may be type rp (processing resource), rw (communication resource write operation), rr (communication resource read operation), ri (communication resource interface), rmux (communication resource multiplexer), rm (memory resource). Then in the following line we define the configuration cost function of the hardware resource, we also may define some parameters in this field. The next line defines the operations that the hardware resource can perform. Each operation is described with the name of the operation, its parameters, the input latency function name and the computing latency function name. These two names should be defined in the latency functions section. 
+
+
+Allowed parameters:
+* range , which represents a range of integer values. It should be defined as Parameter = [startvalue | endvalue]
+* fixvalue, represents a fixed value. It should be defined as Parameter = [value]
+* boolean, represents a boolean value (true or false). It should be defined as Parameter = [boolean]
+* vectorvalues, represents a list of integer values. It should be defined as Parameter = [value0 ~ value1 ~ value2 ~ value3]
+* vectorstring, represents a list of strings. It should be defined as Parameter = [string0 ~ string1 ~ string2]
+* fixstring, represents a fixed string. It should be defined as Parameter = [string0]
 
 
 
