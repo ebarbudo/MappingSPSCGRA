@@ -37,7 +37,7 @@ The specification file is divided into three sections: configuration functions a
 
 ## Command line and requirements
 
-This software tool is developed in Python 3.6. The only external requirement is the GraphViz library installed, other libraries will be installed automatically. The software tool is executed throught the command line and several arguments need to be specified.
+This software tool is developed in Python 3.6. The only external requirement is the GraphViz (version 0.13.2) library installed, other libraries will be installed automatically. The software tool is executed throught the command line and several arguments need to be specified.
 
 The main arguments are:
 
