@@ -1,0 +1,102 @@
+# configuration application file 00 for hw 01, in here we describe a simple
+# application which consist of a pipeline of tasks (4)
+#------------------------------------------------------------------------------
+# APPLICATION DESCRIPTION
+
+sensor0_a1;
+interface,[t0];
+[width=640,   height=480];
+
+sensor0_a2;
+interface,[t2];
+[width=640,   height=480];
+
+sensor0_a3;
+interface,[t4];
+[width=640,   height=480];
+
+sensor0_a4;
+interface,[t6];
+[width=640,   height=480];
+
+sensor0_a5;
+interface,[t8];
+[width=640,   height=480];
+
+sensor0_a6;
+interface,[t10];
+[width=640,   height=480];
+
+t0;
+ero_arb,[t1];
+[AR=0];
+
+t1;
+dil_arb,[actuator_a];
+[AR=0];
+
+t2;
+ero_arb,[t3];
+[AR=8];
+
+t3;
+dil_arb,[actuator_b];
+[AR=8];
+
+t4;
+ero_arb,[t5];
+[AR=13];
+
+t5;
+dil_arb,[actuator_c];
+[AR=13];
+
+t6;
+ero_arb,[t7];
+[AR=15];
+
+t7;
+dil_arb,[actuator_d];
+[AR=15];
+
+t8;
+ero_arb,[t9];
+[AR=13];
+
+t9;
+dil_arb,[actuator_e];
+[AR=13];
+
+t10;
+ero_arb,[t11];
+[AR=8];
+
+t11;
+dil_arb,[actuator_f];
+[AR=8];
+
+
+actuator_a;
+interface,[];
+[width=640,   height=480];
+
+actuator_b;
+interface,[];
+[width=640,   height=480];
+
+actuator_c;
+interface,[];
+[width=640,   height=480];
+
+actuator_d;
+interface,[];
+[width=640,   height=480];
+
+actuator_e;
+interface,[];
+[width=640,   height=480];
+
+actuator_f;
+interface,[];
+[width=640,   height=480];
+#------------------------------------------------------------------------------

@@ -1,0 +1,61 @@
+# in here we describe an application with three branches of two tasks
+#------------------------------------------------------------------------------
+# APPLICATION DESCRIPTION
+
+sensor_a;
+interface,[t1];
+[width=640,   height=480];
+
+t1;
+task1,[t2];
+[KS=25];
+
+t2;
+task2,[actuator_a];
+[KS=25];
+
+
+actuator_a;
+interface,[];
+[width=640,height=480];
+
+
+sensor_b;
+interface,[t5];
+[width=640,   height=480];
+
+t5;
+task2,[t6];
+[KS=25];
+
+t6;
+task1,[actuator_b];
+[KS=25];
+
+
+actuator_b;
+interface,[];
+[width=640,height=480];
+
+
+sensor_c;
+interface,[t9];
+[width=640,   height=480];
+
+t9;
+task3,[t10];
+[KS=25];
+
+t10;
+task1,[actuator_c];
+[KS=25];
+
+
+actuator_c;
+interface,[];
+[width=640,height=480];
+
+
+
+
+#------------------------------------------------------------------------------

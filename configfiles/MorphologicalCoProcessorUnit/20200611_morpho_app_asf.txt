@@ -1,0 +1,51 @@
+# configuration application file 00 for hw 01, in here we describe a simple
+# application which consist of a pipeline of tasks (4)
+#------------------------------------------------------------------------------
+# APPLICATION DESCRIPTION
+
+sensor0_a1;
+interface,[t0];
+[width=640,   height=480];
+
+t0;
+dilation,[t1];
+[KS=3];
+
+t1;
+erosion,[t2];
+[KS=5];
+
+t2;
+dilation,[t3];
+[KS=7];
+
+t3;
+erosion,[t4];
+[KS=9];
+
+t4;
+dilation,[t5];
+[KS=11];
+
+t5;
+erosion,[t6];
+[KS=13];
+
+t6;
+dilation,[t7];
+[KS=15];
+
+
+t7;
+erosion,[t8];
+[KS=17];
+
+t8;
+dilation,[actuator_a];
+[KS=9];
+
+actuator_a;
+interface,[];
+[width=640,height=480];
+
+#------------------------------------------------------------------------------

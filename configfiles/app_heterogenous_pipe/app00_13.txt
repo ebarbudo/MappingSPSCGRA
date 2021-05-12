@@ -1,0 +1,33 @@
+# in here we describe a simple
+# application which consist of a pipeline of tasks (4)
+#------------------------------------------------------------------------------
+# APPLICATION DESCRIPTION
+
+sensor_a;
+interface,[t1];
+[width=640,   height=480];
+
+t1;
+task1,[t2];
+[KS=25];
+
+t2;
+task2,[t3];
+[KS=25];
+
+
+t3;
+task3,[t4];
+[KS=25];
+
+t4;
+task1,[actuator_a];
+[KS=25];
+
+
+
+actuator_a;
+interface,[];
+[width=640,height=480];
+
+#------------------------------------------------------------------------------3
