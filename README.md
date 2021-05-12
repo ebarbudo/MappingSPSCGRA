@@ -3,7 +3,7 @@
 
 ## Overview
 
-This repository contains a software tool developed for the easy reuse of Software Programmable Streaming Coarse Grained Reconfigurable Architectures (SPS-CGRA). The complete overview is showed in the following figure
+This repository contains a software tool developed for the easy reuse of Software Programmable Streaming Coarse-Grained Reconfigurable Architectures (SPS-CGRA). The complete overview is showed in the following figure
 
 
 
@@ -15,7 +15,11 @@ The inputs are a couple of specification files (application and hardware). The s
 
 ## Specification Files
 
-The inputs of the tool are a couple of specification file. Some examples of this are in the folder configfiles/
+The inputs of the tool are a couple of specification file. Some examples of these files are in the folder configfiles/.
+
+General specifications for the files:
+* All comments should start with #
+* Each line should finish with a ;
 
 ### Application specification file
 
@@ -24,7 +28,7 @@ An example of a specification file is showed in the following figure
 ![specificationfileapplication](https://user-images.githubusercontent.com/35706145/117912046-655e6d80-b2a4-11eb-8fdf-42699c0634ca.png)
 
 
-In this simple example the application consists of a sensor, an actuator and a task, all conected in a pipeline.
+In this simple example the application consists of a sensor, an actuator and a task, all conected in a pipeline. There is no limit to the number of tasks, parameters, or number of output edges. The name of the task should be without spaces and one single word that could contain letters, number or special characters.
 
 ### Hardware specification file
 
@@ -33,6 +37,38 @@ An example of a specification file is showed in the following figure
 ![specificationfilehardware](https://user-images.githubusercontent.com/35706145/117912704-94291380-b2a5-11eb-8b78-14ae32e1898b.png)
 
 The specification file is divided into three sections: configuration functions and parameters, latency functions (input and computing latencies) and hardware resources description.
+
+#### Configuration functions
+
+This part should start with the word 
+
+    configuration;
+    
+next, we define the type of configuration, either sequential or parallel. In a sequential configuration, the configuration costs of all the hardware resources will be added. In a parallel configuration, the largest value of configuration cost of the hardware resources will be the one considered during the performance evaluation. Following the type, we describe the configuration cost functions of the hardware resources. These functions might consist of  elementary operations (+,x,-,/) and their concatenations. Next, we could describe the parameters to take into account in the computing of the configuration cost functions.  This helps if we have a fixed parameter or a parameter related to a variable.
+The order of the elements is not important.
+
+#### Latency functions
+
+This part should start with the word
+ 
+    functions;
+   
+in this part we should define the input and computing functions. We can use elementary operations (+,x,-,/) and their concatenations. Also, we may use keywords such as width (width of the input image) or height (height of the input image). Aditionally, we may define the function as a constant. Both configuration functions and latency functions names will need to match the names that we define in the description of the hardware resources.
+
+
+#### Hardware resources description
+
+This part should start with the word
+
+    resources;
+    
+in this part we describe the hardware resources and their features. An extract of a hardware specification file is showed in the following figure
+
+![specificationresource](https://user-images.githubusercontent.com/35706145/117990567-e3e9f800-b302-11eb-84dc-09db6bba5fb4.png)
+
+
+Each hardware resource should start with the name. Then the following line defines the type of hardware resource and the output edges. The resources may be type rp (processing resource), rw (communication resource write operation), rr (communication resource read operation), ri (communication resource interface), rmux (communication resource multiplexer), rm (memory resource). Then in the following line we define the configuration cost function of the hardware resource, we also may define some parameters in this field. The next line defines the operations that the hardware resource can perform. Each operation is described with the name of the operation, its parameters, the input latency function name and the computing latency function name. These two names should be defined in the latency functions section. 
+
 
 
 ## Command line and requirements
