@@ -23,7 +23,7 @@ General specifications for the files:
 * White spaces are not considered
 
 
-### Application specification file
+### Application Specification File
 
 An example of a specification file is showed in the following figure.
 
@@ -31,7 +31,7 @@ An example of a specification file is showed in the following figure.
 
 In this simple example, the application consists of a sensor, an actuator, and a task connected in a pipeline. There is no limit to the number of tasks, parameters, or the number of output edges. The task's name should be without spaces and one single word that could contain letters, numbers, or special characters.
 
-### Hardware specification file
+### Hardware Specification File
 
 An example of a specification file is showed in the following figure.
 
@@ -39,7 +39,7 @@ An example of a specification file is showed in the following figure.
 
 The specification file is divided into three sections: configuration functions and parameters, latency functions (input and computing latencies), and hardware resources description.
 
-#### Configuration functions
+#### Configuration Functions
 
 This part should start with the word 
 
@@ -47,7 +47,7 @@ This part should start with the word
     
 Next, we define the type of configuration, either sequential or parallel. In a sequential configuration, the configuration costs of all the hardware resources will be added. In a parallel configuration, the largest value of configuration cost of the hardware resources will be the one considered during the performance evaluation. Following the type, we describe the configuration cost functions of the hardware resources. These functions might consist of elementary operations (+,x,-,/) and their concatenations. Next, we describe the parameters that will be taken into account in computing the configuration cost functions.  This helps if we have a fixed parameter or a parameter related to a variable.
 The order of the elements is not important.
-#### Latency functions
+#### Latency Functions
 
 This part should start with the word
  
@@ -56,7 +56,7 @@ This part should start with the word
 In this part, we should define the input and computing functions. We can use elementary operations (+,x,-,/) and their concatenations. Also, we may use keywords such as width (width of the input image) or height (height of the input image). Additionally, we may define the function as a constant. Both configuration functions and latency function's names will need to match the names specified in the description of the hardware resources.
 
 
-#### Hardware resources description
+#### Hardware Resources Description
 
 This part should start with the word
 
@@ -80,7 +80,7 @@ Allowed parameters:
 
 
 
-## Command line and requirements
+## Command Line and Requirements
 
 This software tool is developed in Python 3.6. The only external requirement is the GraphViz (version 0.13.2) library installed. Other libraries will be installed automatically. The software tool is executed through the command line, and several arguments need to be specified.
 
@@ -163,17 +163,17 @@ Default value 'outputfiles'
 * -rewardpath : defines the path of the rewards vector
 * -limittimeslots : defines the limit of numnber of time slots for the exhaustive algorithm (limit the exploration design space)
 
-## Mapping algorithms
+## Mapping Algorithms
 
 This tool includes the following mapping algorithms : topology-aware mapping algorithm (TA-MAP), bayes-based mapping algorithm (BB-MAP), q-learning mapping algorithm, single-shot mapping algorithm (SS-MAP) and an exhaustive mapping algorithm. Each algorithm has its default values, however, they can change through the respective arguments.
 
-### Topology-aware mapping algorithm
+### Topology-Aware Mapping Algorithm
 
 The ta-map is based on lookahead techniques and to be selected we use the following arguments:
 
     -ta heu -heutype original
 
-### Bayes-Based mapping algorithm
+### Bayes-Based Mapping Algorithm
  
  The BB-MAP requires the following arguments:
  
@@ -181,7 +181,7 @@ The ta-map is based on lookahead techniques and to be selected we use the follow
      
    Aditional arguments may be used, -byslatlmt and -bysdislmt, both arguments only accepts integers.
  
- ### Q-Learning mapping algorithm
+ ### Q-Learning Mapping Algorithm
  
  The q-learning mapping algorithm requires to be specified: the number of episodes for the offline and the online training, and the specifications of the epsilon decay
  
@@ -199,7 +199,7 @@ The ta-map is based on lookahead techniques and to be selected we use the follow
  
  the options are one, using one random topological sorting, and alltopo using all topological sortings.
  
- ### Exhaustive mapping algorithm
+ ### Exhaustive Mapping Algorithm
  
  An exhaustive algorithm is included as a benchmark for the other algorithms.
  
@@ -208,7 +208,7 @@ The ta-map is based on lookahead techniques and to be selected we use the follow
  
  
  
- ## Random graph generator
+ ## Random Graph Generator
  
  
 The pseudo-random graph generator allows  to produce synthetic graphs to verify the performance of the mapping algorithms.  The information to generate the graphs is obtained from a specification file.  This file is a .txt that should contain the following fields:
@@ -252,7 +252,7 @@ The pseudo-random graph generator allows  to produce synthetic graphs to verify 
  The specification file is read by a parser and the data from this file is stored in several global variables to be used throughout the generation process. There is no standard order for the items. The comments should start with a #. Each line should end with a ;, and other lines beside  the ones described above are disregarded.
  
  
- ## Constrains specification file
+ ## Constrains Specification File
  
  Another feauture of the tool is the capability of choosing an specific hardware resource for a given task. We are able to allocate manually tasks so the mapping algorithm will deal with the remaining tasks. This is done throug a constrains specification file (txt file) with the following format
  
