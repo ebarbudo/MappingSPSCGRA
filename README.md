@@ -202,7 +202,7 @@ The ta-map is based on lookahead techniques and to be selected we use the follow
  ## Random graph generator
  
  
-The pseudo-random graph generator allows one to produce synthetic graphs to verify the performance of the mapping algorithms.  The information to generate the graphs is obtained from a specification file.  This file is a .txt that should contain the following fields:
+The pseudo-random graph generator allows  to produce synthetic graphs to verify the performance of the mapping algorithms.  The information to generate the graphs is obtained from a specification file.  This file is a .txt that should contain the following fields:
 
 
 
@@ -241,3 +241,27 @@ The pseudo-random graph generator allows one to produce synthetic graphs to veri
 
  
  The specification file is read by a parser and the data from this file is stored in several global variables to be used throughout the generation process. There is no standard order for the items. The comments should start with a #. Each line should end with a ;, and other lines beside  the ones described above are disregarded.
+ 
+ 
+ ## Constrains specification file
+ 
+ Another feauture of the tool is the capability of choosing an specific hardware resource for a given task. We are able to allocate manually tasks so the mapping algorithm will deal with the remaining tasks. This is done throug a constrains specification file (txt file) with the following format
+ 
+ 
+![cons](https://user-images.githubusercontent.com/35706145/118012349-911a3b80-b316-11eb-96d7-005456ba689b.png)
+
+
+
+The file starts with the keyword 
+    
+        mapping;
+        
+ Then the following lines should contain the tuples with the names of the task and the names of the hardware resources. The names should be the same as the ones of the hardware and application files. 
+ 
+ ## Example
+ 
+ A simple example of a command line is
+ 
+        python main.py -app configfiles/app_homogenous_pipe/app00_01.txt -hw configfiles/hw_homogenous_pipe/hw_00.txt -ta heu -heutype bayes -mo total -sg true -si true -iter 3 -folder bayes_result 
+        
+  The last command line specifies an application specification file located inside the folder configfiles/app_homogenous_pipe/, inside of the current folder. The same as the hardware specification file. Next, we specified the type of algorithm, which is the BB-MAP, then we select the execution of the performance evaluation. Then we choose to visualize both the input and output graphs. Next, we specified that we want to execute three times the entire process (mapping plus performance evaluation). Finally, we define the folder where all the output files will be stored.
