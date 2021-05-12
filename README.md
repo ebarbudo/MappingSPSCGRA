@@ -122,23 +122,23 @@ Default value 'outputfiles'
 
 This tool includes the following mapping algorithms : topology-aware mapping algorithm (TA-MAP), bayes-based mapping algorithm (BB-MAP), q-learning mapping algorithm, single-shot mapping algorithm (SS-MAP) and an exhaustive mapping algorithm.
 
-## Topology-aware mapping algorithm
+### Topology-aware mapping algorithm
 
 The ta-map is based on lookahead techniques and to be selected we use the following arguments:
 
 -ta heu -heutype original
 
-## Bayes-Based mapping algorithm
+### Bayes-Based mapping algorithm
  
  The BB-MAP requires the following arguments:
  
  -ta heu -heutype bayes -byslatlmt INTEGER -bysdislmt INTEGER
  
- ## Q-Learning mapping algorithm
+ ### Q-Learning mapping algorithm
  
  The q-learning mapping algorithm requires to be specified: the number of episodes for the offline and the online training, and the specifications of the epsilon decay
  
- ## Single-Shot Mapping Algorithm
+ ### Single-Shot Mapping Algorithm
  
  The SS-MAP requires the following arguments:
  
@@ -146,8 +146,52 @@ The ta-map is based on lookahead techniques and to be selected we use the follow
  
  in the case of -listtype we can define either one or alltopo
  
- ## Exhaustive mapping algorithm
+ ### Exhaustive mapping algorithm
  
  An exhaustive algorithm is included as a benchmark for the other algorithms.
  
  
+ 
+ 
+ ## Random graph generator
+ 
+ 
+The pseudo-random graph generator allows one to produce synthetic graphs to verify the performance of the mapping algorithms.  The information to generate the graphs is obtained from a specification file.  This file is a .txt that should contain the following fields:
+
+
+
+* Hardware graph specification
+    * number_nodes, defines the maximum number of internal nodes of the graph.
+    * node_input_degree, defines the maximum input degree of the graph.
+    * node_output_degree, defines the maximum output degree of the graph.
+    * number_actuators, defines the number of actuators or sinks of the hardware graph.
+    * number_sensors, defines the number of sensors or source of the hardware graph.
+    * number_rm, defines the maximum number of memory resources.
+    * limit_address_space_rm, defines the maximum amount of memory address space for the memory resources.
+    * limit_address_space_rc, defines the maximum amount of memory address space for the communication resources.
+    * configuration_functions_list, defines the configuration functions. It  consist of a list of tuples.
+    * input_latency_functions, defines the input latency functions. It consist of a list of tuples.
+    * operations_list, defines the names of the operations that the resources may perform.
+    * limit_parameters, defines the maximum number of parameters for each task.
+    * limit_computing_latency, maximum number of clocks cycles for the computing latency of the communication resources.
+    * computing_latency, defines the computing latency functions. It consist of a list of tuples.
+    * limit_range, defines the possible range of the parameters that uses an integer range as input.
+    * strings_list, defines the possible values of the parameters that uses a list of strings as input.
+    * fixed_values, defines the possible values of the parameters that uses a list of integer values as input.
+    * latency_copy, defines the latency of the copy operation.
+    * mux_enable, defines if a multiplexer will be included to the hardware graph.
+
+ * Application graph specification
+    * number_applications, defines the number of applications that will be generated.
+    * input_samples_range, defines the range of amount of input samples.
+    * type_application, defines the type of application that will be generated.
+    * resolutions, defines the possible resolutions of the input image that the generated application will use.
+    * nodes_to_remove, defines the number of nodes that will be removed from the hardware graph.
+    * limit_parallel_ins, define the number of possible parallel instances of the application.
+    * limit_serial_ins, defines the number of possible serial instances of the application.
+    
+  * General specifications.
+    * error_parameters, allows an error in the parameters of the application.
+
+ 
+ The specification file is read by a parser and the data from this file is stored in several global variables to be used throughout the generation process. There is no standard order for the items. The comments should start with a #. Each line should end with a ;, and other lines beside  the ones described above are disregarded.
