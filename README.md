@@ -254,7 +254,7 @@ The pseudo-random graph generator allows  to produce synthetic graphs to verify 
  
  ## Constrains Specification File
  
- Another feauture of the tool is the capability of choosing an specific hardware resource for a given task. We are able to allocate manually tasks so the mapping algorithm will deal with the remaining tasks. This is done throug a constrains specification file (txt file) with the following format
+ Another feauture of the tool is the capability of choosing an specific hardware resource for a given task. We are able to allocate manually tasks so the mapping algorithm will deal with the remaining tasks. This is done through a constrains specification file (txt file) with the following format
  
  
 ![cons](https://user-images.githubusercontent.com/35706145/118012349-911a3b80-b316-11eb-96d7-005456ba689b.png)
